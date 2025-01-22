@@ -15,7 +15,7 @@ console.log("PORT:", process.env.PORT);
 const allowedOrigins = [
   "http://localhost:5173",
   "https://server-backend.azurewebsites.net",
-  "https://wonderful-moss-0687ca600.4.azurestaticapps.net/"
+  "https://wonderful-moss-0687ca600.4.azurestaticapps.net"
 ];
 
 app.use(cors({
