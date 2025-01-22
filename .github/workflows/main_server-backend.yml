@@ -25,7 +25,8 @@ jobs:
         run: |
           npm install
           npm run build --if-present
-         
+          npm run test --if-present
+
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
 
@@ -56,9 +57,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_4284EED4E2CD43B2B4E75A385F414E50 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_A2E7F80481294928BFF784FC3390E9F2 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F640D8F5680748658940FD71FCC467B8 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_326ABDCB1528437C9E96FB53755C549A }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_6CF160B1BB8D435E99E26DE00481A712 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_0EDCEE9BBCE44D5A80AC9EE8A890352C }}
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
