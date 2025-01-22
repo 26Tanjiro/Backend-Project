@@ -24,8 +24,12 @@ app.use(cors({
     } else {
       callback(new Error("Not allowed by CORS"));
     }
-  }
+  },
+  methods: ["GET", "POST", "PUT"], 
+  allowedHeaders: ["Content-Type", "Authorization"],  
+  credentials: true  
 }));
+
 
 app.use(bodyParser.json());
 
