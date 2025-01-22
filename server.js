@@ -27,7 +27,7 @@ app.use(cors({
 
 app.use(bodyParser.json());
 
-const mongoUri = process.env.MONGO_URI;
+const mongoUri = "mongodb+srv://penalosajosh:Tanjiro@form.zgwss.mongodb.net/";
 if (!mongoUri) {
   console.error("MONGO_URI is not defined in the environment variables");
   process.exit(1);
@@ -68,7 +68,7 @@ app.put('/api/formdata/:id', async (req, res) => {
   }
 });
 
-const port = process.env.PORT || 9020;
+const port =9020;
 
 const server = http.createServer(app);
 
