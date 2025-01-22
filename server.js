@@ -10,10 +10,12 @@ dotenv.config();
 
 const app = express();
 
-
 console.log("PORT:", process.env.PORT);
 
-const allowedOrigins = ["http://localhost:5173","https://server-backend.azurewebsites.net"];
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://server-backend.azurewebsites.net"
+];
 
 app.use(cors({
   origin: function (origin, callback) {
@@ -33,7 +35,12 @@ if (!mongoUri) {
   process.exit(1);
 }
 
-mongoose.connect(mongoUri)
+mongoose.connect(mongoUri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  connectTimeoutMS: 30000,
+  socketTimeoutMS: 45000,
+})
   .then(() => console.log("MongoDB connected"))
   .catch(error => {
     console.error("MongoDB Connection Error:", error.message);
@@ -72,6 +79,6 @@ const port = process.env.PORT || 8181;
 
 const server = http.createServer(app);
 
-server.listen(port, 'localhost', () => {
-  console.log(`Server running on http://localhost:${port}`);
+server.listen(port, '0.0.0.0', () => {
+  console.log(`Server running on http://0.0.0.0:${port}`);
 });
